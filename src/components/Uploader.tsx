@@ -58,9 +58,12 @@ const Uploader: React.FC = () => {
 
   const getImageUrl = async (filename: string) => {
     try {
-      const response = await fetch(`http://localhost:3000/images/${filename}`, {
-        method: "GET",
-      });
+      const response = await fetch(
+        `https://image-uploader-api-97oj-dev.fl0.io/images/${filename}`,
+        {
+          method: "GET",
+        }
+      );
 
       return response;
     } catch (error) {
@@ -74,10 +77,13 @@ const Uploader: React.FC = () => {
       const formData = new FormData();
       formData.append("image", file);
 
-      const response = await fetch("http://localhost:3000/upload", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://image-uploader-api-97oj-dev.fl0.io/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       const data = await response.json();
       console.log("Respuesta del servidor:", data);
